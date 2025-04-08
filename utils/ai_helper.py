@@ -7,7 +7,7 @@ import pandas as pd
 import re
 import plotly.express as px
 import plotly.graph_objects as go
-from styles import COLORS
+from utils.styles import COLORS
 import streamlit as st
 
 class BudgetAI:

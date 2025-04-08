@@ -24,15 +24,15 @@ import base64
 from reportlab.graphics.shapes import Drawing, Rect, String, Line, Circle
 from reportlab.graphics import renderPDF
 import math
-from forecast import BudgetForecaster
-from fiscal_forecast import FiscalYearForecaster
-from staff_tracking import StaffTracker
+from utils.forecast import BudgetForecaster
+from utils.fiscal_forecast import FiscalYearForecaster
+from utils.staff_tracking import StaffTracker
 
 # Import styling from styles.py
-from styles import get_css_styles, COLORS
+from utils.styles import get_css_styles, COLORS
 
 # Import AI helper
-from ai_helper import BudgetAI
+from utils.ai_helper import BudgetAI
 
 # Load environment variables
 load_dotenv()
@@ -871,78 +871,8 @@ def main():
             if df is not None and 'df' not in st.session_state:
                 st.session_state.df = df
         
-        elif upload_method == "OneDrive":
-            st.markdown("""
-            ### OneDrive Integration
-            To access a file from OneDrive:
-            1. Share the file in OneDrive and get the sharing link
-            2. Paste the sharing link below
-            3. Click 'Load from OneDrive'
-            """)
-            
-            onedrive_link = st.text_input("OneDrive sharing link", key="onedrive_link")
-            
-            if onedrive_link:
-                if st.button("Load from OneDrive", use_container_width=True):
-                    try:
-                        with st.spinner("Accessing OneDrive file..."):
-                            # Initialize OneDrive client
-                            client_id = os.getenv('AZURE_CLIENT_ID')
-                            client_secret = os.getenv('AZURE_CLIENT_SECRET')
-                            tenant_id = os.getenv('AZURE_TENANT_ID')
-                            
-                            if not all([client_id, client_secret, tenant_id]):
-                                st.error("""
-                                Azure credentials not found. Please ensure you have set the following environment variables:
-                                - AZURE_CLIENT_ID
-                                - AZURE_CLIENT_SECRET
-                                - AZURE_TENANT_ID
-                                """)
-                            else:
-                                # Create credentials object
-                                credentials = (client_id, client_secret)
-                                account = Account(credentials, auth_flow_type='credentials', tenant_id=tenant_id)
-                                
-                                if account.authenticate():
-                                    # Extract file ID from sharing link
-                                    file_id = onedrive_link.split('?')[0].split('/')[-2]
-                                    
-                                    # Get the shared file
-                                    storage = account.storage()
-                                    drive = storage.get_default_drive()
-                                    shared_file = drive.get_item_by_id(file_id)
-                                    
-                                    # Download to temp file
-                                    with tempfile.NamedTemporaryFile(delete=False, suffix=shared_file.name) as temp_file:
-                                        shared_file.download(temp_file.name)
-                                        
-                                        # Load the data
-                                        df = load_excel_data(temp_file)
-                                        if df is not None:
-                                            save_to_cache(df, shared_file.name)
-                                            st.session_state.df = df
-                                            st.success(f"Successfully loaded: {shared_file.name}")
-                                            st.rerun()
-                                        
-                                        # Clean up temp file
-                                        os.unlink(temp_file.name)
-                                else:
-                                    st.error("Failed to authenticate with OneDrive. Please check your credentials.")
-                                    
-                    except Exception as e:
-                        st.error(f"Error accessing OneDrive file: {str(e)}")
-                        
-            # Show current file and clear button if data is cached
-            if cached_df is not None:
-                st.info(f"Currently using: {cached_filename}")
-                if st.button("Clear cached data", key="clear_onedrive_cache"):
-                    clear_cache()
-                    st.rerun()
-                    
-            df = cached_df  # Use cached data if available
-            
-        elif upload_method == "SharePoint":
-            st.info("SharePoint integration coming soon!")
+        elif upload_method in ["OneDrive", "SharePoint"]:
+            st.info("Microsoft integration coming soon!")
             uploaded_file = None
             df = cached_df  # Use cached data if available
         

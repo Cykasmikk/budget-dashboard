@@ -1,0 +1,101 @@
+Project,Expense,Budget Line,Vendor Name,Amount,Date,Start Date,End Date
+Security Enhancement,Marketing,Professional Development,Training Inc.,1560,2024-02-27,,
+Data Center Optimization,Operational Tools,Capital Expenditure,Server Vendor,2827,2024-01-01,,
+DevOps Transformation,Facilities,Travel,Airline/Hotel,3920,2024-04-20,,
+Data Center Optimization,Hardware Procurement,Travel,Hardware Vendor,801,2024-02-03,,
+Data Center Optimization,Cloud Services,Operating Expenses,AWS,1106,2024-04-05,2024-04-01,2025-03-31
+Infrastructure Upgrade,Marketing,Security,Marketing Agency,3670,2024-04-27,,
+DevOps Transformation,Marketing,Travel,Airline/Hotel,1199,2024-02-17,,
+DevOps Transformation,Facilities,Professional Services,Consulting Co.,5588,2024-03-29,2024-03-01,2024-05-31
+DevOps Transformation,Software Licenses,Professional Development,Atlassian,9831,2024-04-13,2024-01-01,2024-12-31
+Data Center Optimization,Consulting Fees,Professional Development,Consulting Co.,690,2024-04-18,,
+Security Enhancement,Facilities,Professional Services,Security Services Ltd,1480,2024-04-26,2024-04-01,2024-06-30
+DevOps Transformation,Travel Expenses,Professional Services,Airline/Hotel,3475,2024-01-01,,
+Data Center Optimization,Consulting Fees,Professional Services,Consulting Co.,6602,2024-01-16,2024-01-01,2024-03-31
+Infrastructure Upgrade,Cloud Services,Professional Development,AWS,1684,2024-03-01,2024-03-01,2025-02-28
+Security Enhancement,Consulting Fees,Marketing,Consulting Co.,3827,2024-04-12,,
+Infrastructure Upgrade,Software Licenses,Professional Development,Microsoft,3894,2024-03-04,2024-03-01,2025-02-28
+Security Enhancement,Consulting Fees,Security,Security Consulting,8819,2024-03-03,2024-03-01,2024-08-31
+Data Center Optimization,Cloud Services,Operating Expenses,Azure,2316,2024-03-09,2024-03-01,2025-02-28
+Cloud Migration,Software Licenses,Facilities,Salesforce,6354,2024-01-22,2024-01-01,2024-12-31
+Security Enhancement,Security Audits,Marketing,Audit Firm,7209,2024-04-02,,
+Infrastructure Upgrade,Marketing,Capital Expenditure,Hardware Vendor,1069,2024-04-28,,
+Data Center Optimization,Marketing,Facilities,Building Mgmt,5942,2024-03-07,,
+Security Enhancement,Operational Tools,Operating Expenses,Monitoring Tool Vendor,2395,2024-03-16,2024-03-01,2025-02-28
+Cloud Migration,Security Audits,Security,Audit Firm,3233,2024-01-26,,
+Cloud Migration,Security Audits,Security,Audit Firm,4363,2024-01-16,,
+DevOps Transformation,Consulting Fees,Capital Expenditure,Consulting Co.,7955,2024-02-20,,
+DevOps Transformation,Marketing,Marketing,Marketing Agency,4514,2024-04-10,,
+Infrastructure Upgrade,Cloud Services,Professional Services,Google Cloud,2186,2024-03-26,2024-03-01,2024-05-31
+Security Enhancement,Training,Marketing,Training Inc.,3509,2024-02-26,,
+Security Enhancement,Training,Security,Training Inc.,8306,2024-01-29,,
+DevOps Transformation,Software Licenses,Professional Development,Adobe,654,2024-03-18,2024-03-01,2025-02-28
+Security Enhancement,Marketing,Operating Expenses,Marketing Agency,1909,2024-04-01,,
+Security Enhancement,Marketing,Capital Expenditure,Equipment Vendor,1284,2024-03-09,,
+Cloud Migration,Training,Operating Expenses,Training Inc.,8596,2024-02-16,,
+DevOps Transformation,Marketing,Technology,Tech Vendor,8060,2024-04-22,,
+Data Center Optimization,Consulting Fees,Technology,Consulting Co.,7843,2024-04-03,,
+DevOps Transformation,Travel Expenses,Marketing,Airline/Hotel,7706,2024-04-19,,
+Data Center Optimization,Hardware Procurement,Security,Hardware Vendor,6096,2024-03-02,,
+Cloud Migration,Security Audits,Security,Audit Firm,6301,2024-04-25,,
+Infrastructure Upgrade,Operational Tools,Professional Services,Service Provider,3306,2024-03-09,2024-03-01,2024-08-31
+Security Enhancement,Software Licenses,Professional Services,Security Software Inc.,1037,2024-03-16,2024-03-01,2025-02-28
+Cloud Migration,Travel Expenses,Professional Services,Airline/Hotel,6486,2024-01-16,,
+Security Enhancement,Training,Professional Development,Training Inc.,2341,2024-03-30,,
+Infrastructure Upgrade,Security Audits,Facilities,Audit Firm,9216,2024-03-30,,
+Infrastructure Upgrade,Marketing,Travel,Airline/Hotel,7471,2024-02-17,,
+Cloud Migration,Operational Tools,Facilities,Building Mgmt,6125,2024-03-25,,
+Infrastructure Upgrade,Marketing,Operating Expenses,Marketing Agency,3450,2024-02-08,,
+Data Center Optimization,Cloud Services,Facilities,AWS,8492,2024-04-09,2024-04-01,2025-03-31
+Infrastructure Upgrade,Cloud Services,Professional Development,Azure,5280,2024-02-02,2024-02-01,2025-01-31
+Security Enhancement,Operational Tools,Operating Expenses,Monitoring Tool Vendor,2868,2024-04-03,2024-04-01,2025-03-31
+Security Enhancement,Operational Tools,Facilities,Building Mgmt,7155,2024-04-10,,
+Security Enhancement,Training,Professional Development,Training Inc.,8673,2024-01-23,,
+Security Enhancement,Operational Tools,Travel,Airline/Hotel,4995,2024-01-10,,
+Data Center Optimization,Consulting Fees,Facilities,Consulting Co.,9663,2024-04-27,,
+DevOps Transformation,Marketing,Professional Development,Training Inc.,6502,2024-03-09,,
+Cloud Migration,Travel Expenses,Professional Services,Airline/Hotel,7114,2024-04-09,,
+Security Enhancement,Facilities,Security,Security Services Ltd,9858,2024-02-03,,
+Infrastructure Upgrade,Operational Tools,Professional Services,Service Provider,6419,2024-02-21,2024-02-01,2024-07-31
+Security Enhancement,Software Licenses,Security,Security Software Inc.,1353,2024-04-04,2024-04-01,2025-03-31
+Infrastructure Upgrade,Cloud Services,Capital Expenditure,Hardware Vendor,4646,2024-01-10,,
+Infrastructure Upgrade,Consulting Fees,Capital Expenditure,Consulting Co.,4269,2024-01-19,,
+Security Enhancement,Security Audits,Capital Expenditure,Audit Firm,1074,2024-02-27,,
+Data Center Optimization,Facilities,Travel,Airline/Hotel,1648,2024-04-05,,
+Infrastructure Upgrade,Travel Expenses,Professional Services,Airline/Hotel,6793,2024-01-01,,
+Infrastructure Upgrade,Facilities,Security,Building Mgmt,6957,2024-04-29,,
+Security Enhancement,Operational Tools,Professional Development,Training Inc.,8009,2024-03-09,,
+Infrastructure Upgrade,Training,Operating Expenses,Training Inc.,5277,2024-04-18,,
+Infrastructure Upgrade,Cloud Services,Professional Development,Google Cloud,4354,2024-01-04,2024-01-01,2024-12-31
+Security Enhancement,Cloud Services,Operating Expenses,AWS,2991,2024-01-16,2024-01-01,2024-12-31
+Security Enhancement,Security Audits,Technology,Audit Firm,3624,2024-01-24,,
+Cloud Migration,Training,Professional Development,Training Inc.,6191,2024-03-20,,
+Data Center Optimization,Marketing,Facilities,Building Mgmt,3551,2024-04-28,,
+Data Center Optimization,Hardware Procurement,Facilities,Hardware Vendor,504,2024-01-02,,
+Infrastructure Upgrade,Consulting Fees,Marketing,Consulting Co.,5722,2024-04-22,,
+Data Center Optimization,Cloud Services,Professional Services,AWS,5815,2024-04-01,2024-04-01,2024-09-30
+Infrastructure Upgrade,Software Licenses,Operating Expenses,Microsoft,5369,2024-02-01,2024-02-01,2025-01-31
+Cloud Migration,Cloud Services,Operating Expenses,Azure,1376,2024-03-31,2024-03-01,2025-02-28
+Security Enhancement,Facilities,Professional Services,Security Services Ltd,9683,2024-03-24,2024-03-01,2024-05-31
+Security Enhancement,Cloud Services,Travel,AWS,7527,2024-01-24,,
+Security Enhancement,Cloud Services,Marketing,Azure,4642,2024-01-12,,
+Data Center Optimization,Hardware Procurement,Travel,Airline/Hotel,7466,2024-02-19,,
+Cloud Migration,Hardware Procurement,Travel,Hardware Vendor,7579,2024-02-04,,
+Data Center Optimization,Travel Expenses,Travel,Airline/Hotel,8487,2024-02-02,,
+Data Center Optimization,Marketing,Professional Services,Marketing Agency,7299,2024-02-02,2024-02-01,2024-04-30
+Cloud Migration,Software Licenses,Travel,Salesforce,4965,2024-03-01,2024-03-01,2025-02-28
+Cloud Migration,Cloud Services,Facilities,Google Cloud,1135,2024-02-20,2024-02-01,2025-01-31
+Cloud Migration,Cloud Services,Capital Expenditure,Hardware Vendor,2193,2024-02-12,,
+Cloud Migration,Consulting Fees,Technology,Consulting Co.,5252,2024-04-10,,
+Security Enhancement,Hardware Procurement,Operating Expenses,Hardware Vendor,8811,2024-01-12,,
+DevOps Transformation,Software Licenses,Operating Expenses,Atlassian,1330,2024-03-07,2024-03-01,2025-02-28
+DevOps Transformation,Security Audits,Technology,Audit Firm,5677,2024-03-05,,
+Cloud Migration,Travel Expenses,Professional Services,Airline/Hotel,9432,2024-02-02,,
+DevOps Transformation,Marketing,Professional Development,Training Inc.,8808,2024-02-09,,
+DevOps Transformation,Training,Professional Services,Training Inc.,6449,2024-03-14,,
+Cloud Migration,Marketing,Operating Expenses,Marketing Agency,3338,2024-02-12,,
+DevOps Transformation,Facilities,Operating Expenses,Building Mgmt,1650,2024-02-13,,
+Data Center Optimization,Cloud Services,Technology,AWS,8060,2024-01-29,2024-01-01,2024-12-31
+Infrastructure Upgrade,Travel Expenses,Travel,Airline/Hotel,2431,2024-01-13,,
+Infrastructure Upgrade,Facilities,Professional Services,Building Mgmt,9704,2024-01-12,,
+Cloud Migration,Software Licenses,Security,Security Software Inc.,2164,2024-04-04,2024-04-01,2025-03-31
