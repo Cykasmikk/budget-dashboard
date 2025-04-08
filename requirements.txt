@@ -1,0 +1,12 @@
+streamlit>=1.32.0  # Update to the latest stable version
+pandas>=2.2.1      # Update to the latest stable version
+openpyxl>=3.1.2    # Update to the latest stable version
+xlrd>=2.0.1       # Consider removing if possible due to security concerns, and use openpyxl for .xlsx files
+plotly>=5.19.0     # Update to the latest stable version
+O365>=2.0.26      # Consider replacing with Microsoft Graph SDK for Python
+msal>=1.26.0       # Update to the latest stable version
+python-dotenv>=1.0.1 # Update to the latest stable version
+networkx>=3.2.1    # For network graph visualization
+reportlab>=4.0.8   # For PDF report generation
+scikit-learn>=1.4.0  # For budget forecasting
+numpy>=1.26.0      # Required by scikit-learn

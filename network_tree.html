@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>D3 v7 Collapsible Tree</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* Styles optimized for embedding */
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        .node circle {
+            stroke-width: 2px;
+            /* Default stroke - will be overridden by JS for specific types */
+            stroke: #4A90E2;
+            /* Default fill - will be overridden by JS */
+            fill: #fff;
+            cursor: pointer;
+        }
+        .node circle.collapsed {
+             /* Fill for collapsed nodes - remains consistent */
+            fill: lightsteelblue;
+            stroke: #4A90E2; /* Keep stroke consistent for collapsed */
+        }
+        .node text {
+            font-size: 12px;
+            pointer-events: none; /* Critical: Allows clicks on underlying circle/group */
+            fill: #FFFFFF; /* Text color remains white */
+        }
+        .link {
+            fill: none;
+            /* Default stroke - overridden by JS based on target node type */
+            stroke: #4A90E2;
+            stroke-width: 1.5px;
+        }
+        #network-tree-container {
+            width: 100%;
+            height: 100%; /* Fill the component height */
+            min-height: 600px; /* Ensure minimum space */
+            background-color: #1E2126;
+            overflow: hidden; /* Important for SVG clipping */
+            border: 1px solid #dee2e6;
+            box-sizing: border-box;
+            display: flex; /* Use flex to contain SVG properly */
+            justify-content: center;
+            align-items: center;
+        }
+        #debug {
+            position: absolute; /* Position relative to container */
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 10px;
+            max-width: 95%;
+            max-height: 100px;
+            overflow: auto;
+            display: none;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="network-tree-container">
+        </div>
+    <div id="debug"></div>
+
+    <script>
+        // --- D3 Visualization Code ---
+
+        const container = document.getElementById('network-tree-container');
+        const debug = document.getElementById('debug');
+
+        // --- Debug Function ---
+        function debugLog(msg) {
+             if (debug) {
+                 debug.style.display = 'block';
+                 const cleanMsg = String(msg).replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                 debug.innerHTML += cleanMsg + '<br>';
+                 debug.scrollTop = debug.scrollHeight;
+             }
+             // console.log(msg); // Optional: Also log to browser console
+        }
+
+        // !!! THIS LINE IS THE TARGET FOR PYTHON'S .replace() !!!
+        const data = {}; // Python injects data here, e.g., {"name":"Root","type":"root","id":"root","children":...}
+
+        // --- D3 Globals ---
+        let root;
+        let node, link;
+        let svg, g, zoom, tree;
+        const duration = 500;
+
+        // --- Helper Functions (Collapse/Expand/Center/Diagonal) ---
+        function collapse(d) { if (d.children) { d._children = d.children; d._children.forEach(collapse); d.children = null; } }
+        function expand(d) { if (d._children) { d.children = d._children; d._children = null; } }
+        function expandAll(d = root) { if (!d) return; if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandAll); } }
+        function collapseAll(d = root) { if (!d) return; if (d.children) { d.children.forEach(collapse); } }
+        function centerNode(source) {
+            if (!source || !svg || !zoom) return;
+            try {
+                const parent = svg.node().parentElement;
+                const width = parent.clientWidth;
+                const height = parent.clientHeight;
+                const t = d3.zoomTransform(svg.node());
+                let x = -source.y0;
+                let y = -source.x0;
+                x = x * t.k + width / 2;
+                y = y * t.k + height / 2;
+                svg.transition().duration(duration)
+                    .call(zoom.transform, d3.zoomIdentity.translate(x, y).scale(t.k));
+            } catch (e) { debugLog(`Error centering node: ${e}`); }
+        }
+        function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+        // --- Core D3 Update Function ---
+        function update(source) {
+            if (!root || !tree || !g) { debugLog("Update called prematurely."); return; }
+            const treeLayout = tree(root);
+            const nodes = treeLayout.descendants();
+            const links = treeLayout.links();
+            nodes.forEach(d => { d.y = d.depth * 180; }); // Horizontal spacing
+
+            // --- Nodes ---
+            // Use unique ID from Python data if available, else fallback to name
+            node = g.selectAll('g.node').data(nodes, d => d.data.id || d.data.name);
+
+            const nodeEnter = node.enter().append('g')
+                .attr('class', 'node')
+                .attr('transform', `translate(${source.y0 || root.y0},${source.x0 || root.x0})`)
+                .on('click', toggleChildren)
+                .on('mouseover', (event, d) => d3.select(event.currentTarget).select('circle').style('stroke-width', '3px'))
+                .on('mouseout', (event, d) => d3.select(event.currentTarget).select('circle').style('stroke-width', '2px'));
+
+            nodeEnter.append('circle').attr('r', 1e-6); // Start tiny
+            nodeEnter.append('text')
+                .attr('dy', '.35em')
+                .attr('x', d => (d.children || d._children) ? -10 : 10)
+                .attr('text-anchor', d => (d.children || d._children) ? 'end' : 'start')
+                .text(d => d.data.name) // Display name
+                .style('fill-opacity', 1e-6); // Start transparent
+
+            const nodeUpdate = nodeEnter.merge(node);
+            nodeUpdate.transition().duration(duration).attr('transform', d => `translate(${d.y},${d.x})`);
+
+            // Node coloring based on type (from previous step)
+            nodeUpdate.select('circle')
+                .attr('r', 6)
+                .attr('class', d => d._children ? 'collapsed' : '')
+                .style('fill', d => {
+                    if (d._children) return 'lightsteelblue';
+                    const nodeType = d.data.type;
+                    if (nodeType === 'expense') return 'red';
+                    if (nodeType === 'project') return '#4A90E2';
+                    return '#fff';
+                })
+                .style('stroke', d => {
+                     if (d._children) return '#4A90E2';
+                    const nodeType = d.data.type;
+                    if (nodeType === 'expense') return 'darkred';
+                    if (nodeType === 'project') return '#4A90E2';
+                    return '#4A90E2';
+                });
+
+            nodeUpdate.select('text')
+                .attr('x', d => (d.children || d._children) ? -10 : 10)
+                .attr('text-anchor', d => (d.children || d._children) ? 'end' : 'start')
+                .style('fill-opacity', 1);
+
+            const nodeExit = node.exit().transition().duration(duration).attr('transform', `translate(${source.y},${source.x})`).remove();
+            nodeExit.select('circle').attr('r', 1e-6);
+            nodeExit.select('text').style('fill-opacity', 1e-6);
+
+            // --- Links ---
+            // Use unique ID of the TARGET node for link data binding
+            link = g.selectAll('path.link').data(links, d => d.target.data.id || d.target.data.name);
+
+            const linkEnter = link.enter().insert('path', "g").attr("class", "link")
+                .attr('d', d => { const o = {x: source.x0 || root.x0, y: source.y0 || root.y0}; return diagonal(o, o); });
+
+            const linkUpdate = linkEnter.merge(link);
+
+            // Transition link paths to new positions
+            linkUpdate.transition().duration(duration)
+                .attr('d', d => diagonal(d.source, d.target));
+
+            // *****************************************
+            // *** ADDED SECTION FOR LINK COLORING START ***
+            // *****************************************
+            // Apply stroke color based on the TARGET node's type
+            // Apply this after the merge so it affects entering and updating links
+            // No transition applied to color, it changes instantly with the update
+            linkUpdate.style('stroke', d => {
+                // Check the type of the node the link is pointing TO (the target)
+                // Check target and target.data exist for safety
+                if (d.target && d.target.data && d.target.data.type === 'expense') {
+                    return 'red'; // Red link if target is an expense node
+                } else {
+                    return '#4A90E2'; // Default blue for links targeting projects, root, etc.
+                }
+            });
+            // *****************************************
+            // *** ADDED SECTION FOR LINK COLORING END ***
+            // *****************************************
+
+            // Remove exiting links
+            link.exit().transition().duration(duration)
+                .attr('d', d => { const o = {x: source.x, y: source.y}; return diagonal(o, o); })
+                .remove();
+
+            // Store positions for next transition
+            nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+        }
+
+        // --- Click Handler ---
+        function toggleChildren(event, d) {
+            event.stopPropagation();
+            if (d.children) { collapse(d); } else { expand(d); }
+            update(d);
+            // Optional: centerNode(d);
+        }
+
+        // --- Chart Initialization Function ---
+        function initializeChart() {
+            debugLog("Initializing chart...");
+            container.innerHTML = '';
+            d3.select("#network-tree-container svg").remove();
+
+            try {
+                if (typeof data === 'undefined' || !data || Object.keys(data).length === 0) {
+                     if (window.treeData) {
+                         debugLog("Using window.treeData as fallback.");
+                         Object.assign(data, window.treeData);
+                     } else {
+                         throw new Error("Injected 'data' object is missing or empty.");
+                     }
+                 }
+                 debugLog("Processing injected data...");
+
+                 root = d3.hierarchy(data);
+
+                 if (!root) throw new Error("d3.hierarchy() failed. Check data structure.");
+                 debugLog(`Hierarchy created. Root: ${root.data.name}`); // Use name (or id)
+
+                // --- Setup SVG, Layout, Zoom ---
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                const margin = { top: 20, right: 120, bottom: 20, left: 120 };
+                const innerWidth = width - margin.left - margin.right;
+                const innerHeight = height - margin.top - margin.bottom;
+
+                root.x0 = innerHeight / 2;
+                root.y0 = 0;
+
+                root.sort((a, b) => d3.ascending(
+                    (a.data.name || '').toLowerCase(),
+                    (b.data.name || '').toLowerCase()
+                ));
+
+                svg = d3.select("#network-tree-container").append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .attr("viewBox", [0, 0, width, height]);
+
+                g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+                tree = d3.tree().size([innerHeight, innerWidth]);
+                zoom = d3.zoom().scaleExtent([0.1, 4]).on("zoom", (event) => { g.attr("transform", event.transform); });
+                svg.call(zoom);
+
+                // --- Initial Render ---
+                if (root.children) { root.children.forEach(collapse); }
+                update(root);
+                centerNode(root);
+
+                debugLog("Chart initialized.");
+
+            } catch (error) {
+                debugLog(`Error initializing D3 tree: ${error.message}\n${error.stack}`);
+                container.innerHTML = `<p style="color:red; padding:20px;">Error initializing chart: ${error.message}</p>`;
+            }
+        }
+
+        // --- Auto-Initialize ---
+        requestAnimationFrame(initializeChart);
+
+    </script>
+</body>
+</html>

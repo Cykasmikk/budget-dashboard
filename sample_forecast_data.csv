@@ -1,0 +1,56 @@
+Project,Expense,Budget Line,Amount,Date,Vendor Name,Start Date,End Date
+IT Infrastructure,Server Hardware Upgrade,Capital Expenditure,12500.00,2022-01-15,Dell Technologies,2022-01-15,2022-03-15
+IT Infrastructure,Cloud Migration Services,Operating Expense,8750.00,2022-02-10,Amazon Web Services,2022-02-01,2022-06-30
+IT Infrastructure,Security Software License,Software,6300.00,2022-03-05,McAfee Inc.,2022-03-05,2023-03-04
+Marketing Campaign,Digital Ad Placement,Advertising,5200.00,2022-03-20,Google Ads,2022-03-15,2022-04-15
+Marketing Campaign,Video Production,Content Creation,8900.00,2022-04-12,Creative Media Inc.,2022-04-01,2022-04-30
+IT Infrastructure,Network Equipment,Capital Expenditure,7600.00,2022-05-03,Cisco Systems,2022-05-01,2022-05-15
+Research Initiative,Data Analysis Software,Software,4200.00,2022-05-18,Tableau Software,2022-05-18,2023-05-17
+Marketing Campaign,Social Media Management,Operating Expense,3800.00,2022-06-07,SocialBoost Agency,2022-06-01,2022-08-31
+Research Initiative,Focus Group Expenses,Research,6500.00,2022-07-22,Consumer Insights Ltd.,2022-07-15,2022-07-29
+IT Infrastructure,IT Support Services,Operating Expense,4800.00,2022-08-15,TechSupport Pro,2022-08-01,2022-10-31
+Marketing Campaign,Trade Show Booth,Events,11200.00,2022-09-10,EventSpace Designs,2022-09-01,2022-09-15
+Research Initiative,Research Equipment,Capital Expenditure,13500.00,2022-10-05,Scientific Apparatus Inc.,2022-10-01,2022-10-15
+IT Infrastructure,Software Subscription,Software,5200.00,2022-11-12,Microsoft Corporation,2022-11-12,2023-11-11
+Marketing Campaign,Print Materials,Advertising,3200.00,2022-12-08,PrintPro Services,2022-12-01,2022-12-15
+Research Initiative,Conference Registration,Events,2800.00,2023-01-18,Science Association,2023-01-18,2023-01-22
+IT Infrastructure,Server Maintenance,Operating Expense,3600.00,2023-02-06,ServerCare Solutions,2023-02-01,2023-04-30
+Marketing Campaign,SEO Optimization,Operating Expense,4500.00,2023-03-15,Digital Rankings LLC,2023-03-01,2023-05-31
+Research Initiative,Lab Supplies,Operating Expense,5800.00,2023-04-02,LabEquip Supply Co.,2023-04-01,2023-04-30
+IT Infrastructure,Database Upgrade,Software,7800.00,2023-04-28,Oracle Corporation,2023-04-28,2024-04-27
+Marketing Campaign,Influencer Partnership,Advertising,9200.00,2023-05-14,Social Influence Agency,2023-05-10,2023-06-10
+Research Initiative,Research Consultants,Professional Services,13800.00,2023-06-08,Research Experts Group,2023-06-01,2023-08-31
+IT Infrastructure,Hardware Replacement,Capital Expenditure,8400.00,2023-07-20,HP Enterprise,2023-07-15,2023-08-15
+Marketing Campaign,Market Analysis,Research,6300.00,2023-08-05,Market Insights Partners,2023-08-01,2023-09-30
+Research Initiative,Patent Application,Legal,9500.00,2023-09-12,IP Law Associates,2023-09-01,2023-12-31
+IT Infrastructure,Cybersecurity Audit,Professional Services,11200.00,2023-10-25,SecureAudit Partners,2023-10-15,2023-11-30
+Marketing Campaign,Holiday Promotion,Advertising,12500.00,2023-11-10,Media Placement Inc.,2023-11-01,2023-12-31
+Research Initiative,Testing Materials,Operating Expense,4800.00,2023-12-07,Quality Testing Labs,2023-12-01,2023-12-31
+IT Infrastructure,Cloud Storage Expansion,Operating Expense,6700.00,2024-01-14,Google Cloud Platform,2024-01-01,2024-12-31
+Marketing Campaign,Website Redesign,Content Creation,14800.00,2024-02-08,Digital Design Studio,2024-02-01,2024-04-30
+Research Initiative,Data Purchase,Research,8300.00,2024-03-02,DataSets Inc.,2024-03-01,2024-03-15
+Expansion Project,Office Lease,Facilities,16500.00,2023-01-10,Urban Properties Ltd.,2023-01-01,2023-12-31
+Expansion Project,Office Furniture,Capital Expenditure,12300.00,2023-02-15,Modern Office Supplies,2023-02-10,2023-03-10
+Expansion Project,Utilities Setup,Facilities,4800.00,2023-03-05,City Utilities,2023-03-01,2023-03-31
+Expansion Project,IT Setup,Operating Expense,8900.00,2023-04-12,Network Solutions Inc.,2023-04-10,2023-05-10
+Expansion Project,Recruitment Services,Human Resources,7600.00,2023-05-20,Talent Finders Agency,2023-05-15,2023-07-31
+Expansion Project,Staff Training,Human Resources,5400.00,2023-06-15,Training Excellence Ltd.,2023-06-10,2023-06-30
+Expansion Project,Equipment Purchase,Capital Expenditure,18700.00,2023-07-08,Business Equipment Inc.,2023-07-01,2023-07-31
+Expansion Project,Location Insurance,Insurance,9300.00,2023-08-22,SafeCorp Insurance,2023-08-15,2024-08-14
+Expansion Project,Legal Services,Legal,11200.00,2023-09-14,Corporate Law Partners,2023-09-01,2023-11-30
+Expansion Project,Moving Services,Operating Expense,6800.00,2023-10-06,Relocation Experts,2023-10-01,2023-10-15
+Expansion Project,Marketing Materials,Advertising,4500.00,2023-11-18,BrandWorks Agency,2023-11-15,2023-12-15
+Expansion Project,Staff Holiday Event,Human Resources,7200.00,2023-12-12,EventSpace Venues,2023-12-12,2023-12-12
+Product Development,R&D Staffing,Human Resources,22500.00,2022-02-05,Specialized Recruiting,2022-02-01,2022-04-30
+Product Development,Prototype Materials,Operating Expense,13600.00,2022-04-18,Materials Supply Co.,2022-04-15,2022-05-31
+Product Development,Testing Equipment,Capital Expenditure,28900.00,2022-06-22,Test Systems Inc.,2022-06-15,2022-07-15
+Product Development,Software Development Tools,Software,8700.00,2022-08-14,Developer Suite Inc.,2022-08-14,2023-08-13
+Product Development,Quality Assurance Services,Professional Services,15300.00,2022-10-10,Quality Assurance Partners,2022-10-01,2022-12-31
+Product Development,Patent Research,Legal,9800.00,2022-12-15,IP Research Associates,2022-12-01,2023-01-31
+Product Development,Regulatory Consultation,Professional Services,12400.00,2023-02-08,Compliance Consultants,2023-02-01,2023-04-30
+Product Development,User Testing,Research,8900.00,2023-04-15,User Experience Labs,2023-04-10,2023-05-10
+Product Development,Product Design Services,Professional Services,17800.00,2023-06-10,Design Innovation Partners,2023-06-01,2023-08-31
+Product Development,Manufacturing Setup,Operating Expense,32500.00,2023-08-22,Manufacturing Solutions,2023-08-15,2023-10-31
+Product Development,Packaging Design,Content Creation,7600.00,2023-10-05,Package Design Studio,2023-10-01,2023-11-15
+Product Development,Market Testing,Research,14200.00,2023-12-10,Market Test Partners,2023-12-01,2024-01-31
+Product Development,Launch Event Planning,Events,18600.00,2024-02-18,Launch Event Specialists,2024-02-15,2024-04-30 
