@@ -1374,7 +1374,7 @@ def main():
                 tree_data_json = json.dumps(tree_data)
                 
                 # Read the HTML template
-                with open('network_tree.html', 'r') as f:
+                with open('html/network_tree.html', 'r') as f:
                     html_template = f.read()
                 
                 # Replace the placeholder with actual data
